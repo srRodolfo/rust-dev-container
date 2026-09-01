@@ -1,0 +1,27 @@
+services:
+  postgres:
+    build:
+      context: ./services/postgres-18
+    container_name: dev_container_postgres
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql:z
+
+  rust:
+    build:
+      context: ./services/rust-1.98-slim
+    container_name: dev_container_rust
+    depends_on:
+      - postgres
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    volumes:
+      - ./projects:/projects:z
+      - cargo_cache:/usr/local/cargo/registry:z
+
+volumes:
+  pgdata:
+  cargo_cache:

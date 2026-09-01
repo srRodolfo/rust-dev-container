@@ -1,0 +1,4 @@
+FROM postgres:18
+
+ENV LANG=C.UTF-8
+ENV TZ=UTC
