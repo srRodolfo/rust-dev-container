@@ -18,8 +18,8 @@ RUN groupadd -g ${PGID} dev \
 
 RUN chown -R dev:dev /usr/local/cargo
 
-WORKDIR /projects
-RUN chown -R dev:dev /projects
+WORKDIR /home/dev/projects
+RUN chown -R dev:dev /home/dev/projects
 
 USER dev
 

@@ -61,7 +61,7 @@ docker compose up -d --build
 
 ### Volumes e Persistência
 
-- Código-fonte é montado no host em `/projects` para `/projects` dentro do container
+- Código-fonte é montado no host em `/projects` para `/home/dev/projects` dentro do container
 - O cache do Cargo persiste no volume `cargo_cache`
 
 ---
@@ -106,7 +106,7 @@ docker_rust_tools() {
   local rel_path="${PWD#*/projects}"
 
   if [ -n "$container" ]; then
-    docker exec -it -w "/projects${rel_path}" "$container" "$tool" "$@"
+    docker exec -it -w "/home/dev/projects${rel_path}" "$container" "$tool" "$@"
   else
     echo "Nenhum container Rust em execução. Rodando '$tool' no host."
     command "$tool" "$@"
