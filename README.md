@@ -9,11 +9,11 @@ O ambiente foi configurado para ser usado com IDEs como RustRover ou Editores co
 ### Estrutura do Projeto
 
 - `services/` Arquivos de configuração do ambiente
-- `services/rust-slim /` Dockerfile do Rust
-- `.env` Variáveis de ambiente (portas, usuários, senhas)
+- `services/rust-slim/` Dockerfile do Rust
+- `.env` Arquivo contendo variáveis de ambiente (portas, usuários, senhas)
 - `docker-compose.yml` Orquestração dos serviços (Rust, etc.)
 - `projects/` Código-fonte dos projetos (montado nos containers)
-- `projects/hello_cargo` Pasta do projeto
+- `projects/hello_cargo` Pasta de um projeto de exemplo
 
 ```
 project-root/
@@ -35,7 +35,7 @@ project-root/
 
 ### Configuração do Ambiente
 
-1. Copie o conteúdo do arquivo `.env.example` para `.env` e ajuste as variáveis conforme necessário:
+1. Copie o conteúdo do arquivo `env.example` para `.env` e ajuste as variáveis conforme necessário:
 
 ```dotenv
 # Nome base para todos os containers
@@ -61,8 +61,8 @@ docker compose up -d --build
 
 ### Volumes e Persistência
 
-- Código-fonte é montado no host `/projects` para `/projects` dentro do container
-- O cache do Cargo persiste em volume `cargo_cache`
+- Código-fonte é montado no host em `/projects` para `/projects` dentro do container
+- O cache do Cargo persiste no volume `cargo_cache`
 
 ---
 
@@ -90,7 +90,7 @@ docker exec dev_container_rust rustup --version
 
 ---
 
-### Atalhos para o Terminal Bash (Opcional)
+### Atalhos (alias) para o Terminal Bash (Opcional)
 
 1. Abra o seu terminal e digite:
 ```
@@ -126,13 +126,13 @@ Como usar:
 # Rodar comandos do rustc direto no container
 rustc --version (exemplo de comando)
 
-# Rodar comandos do carto direto no container
+# Rodar comandos do cargo direto no container
 cargo --version (exemplo de comando)
 
 # Rodar comandos do rustup direto no container
 rustup --version (exemplo de comando)
 ```
-- O comando só funciona na pasta de projetos `projects` e nos diretórios filhos.
+- O comando só funciona no diretório de projetos `projects` e nos diretórios filhos.
 - O comando detecta automaticamente o container do projeto que utiliza este repositório.
 - Caso o container não esteja rodando, o comando será executado no host.
 
