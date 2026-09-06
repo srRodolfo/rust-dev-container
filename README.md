@@ -12,7 +12,7 @@ O ambiente foi configurado para ser usado com IDEs como RustRover ou Editores co
 - `services/rust-slim /` Dockerfile do Rust
 - `.env` Variáveis de ambiente (portas, usuários, senhas)
 - `docker-compose.yml` Orquestração dos serviços (Rust, etc.)
-- `projects/` Código-fonte do projeto (montado nos containers)
+- `projects/` Código-fonte dos projetos (montado nos containers)
 - `projects/hello_cargo` Pasta do projeto
 
 ```
