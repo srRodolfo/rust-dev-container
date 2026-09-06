@@ -94,7 +94,7 @@ docker exec dev_container_rust rustup --version
 
 1. Abra o seu terminal e digite:
 ```
-nano ~/.bashrc
+sudo nano ~/.bashrc
 ```
 2. Adicione o seguinte trecho de código ao seu `~/.bashrc`:
 ```
