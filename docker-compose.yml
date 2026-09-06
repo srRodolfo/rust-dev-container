@@ -1,27 +1,26 @@
 services:
-  postgres:
-    build:
-      context: ./services/postgres-18
-    container_name: dev_container_postgres
-    env_file:
-      - .env
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql:z
-
+  # Rust Lang Slim
   rust:
     build:
-      context: ./services/rust-1.98-slim
-    container_name: dev_container_rust
-    depends_on:
-      - postgres
-    ports:
-      - "${APP_PORT:-8080}:8080"
+      context: ./services/rust-slim
+      args:
+        PUID: ${PUID:-1000}
+        PGID: ${PGID:-1000}
+        RUST_VERSION: ${RUST_VERSION:-latest}
+    image: dev-container-rust:${RUST_VERSION:-latest}-slim  	
+    container_name: ${CONTAINER_NAME:-dev_container}_rust       
     volumes:
       - ./projects:/projects:z
       - cargo_cache:/usr/local/cargo/registry:z
+    ports:
+      - "${RUST_PORT:-8080}:8080"
+    networks:
+      - net
+      
+networks:
+  net:
+    name: ${CONTAINER_NAME:-dev_container}_net
+    driver: bridge
 
 volumes:
-  pgdata:
   cargo_cache:

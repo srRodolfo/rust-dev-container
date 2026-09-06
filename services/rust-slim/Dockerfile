@@ -1,4 +1,5 @@
-FROM rust:1.98-slim
+ARG RUST_VERSION=1.98
+FROM rust:${RUST_VERSION}-slim
 
 RUN apt-get update && apt-get install -y \
     pkg-config \
@@ -9,8 +10,11 @@ RUN apt-get update && apt-get install -y \
 
 RUN cargo install cargo-watch
 
-RUN groupadd -g 1000 dev \
-    && useradd -u 1000 -g dev -m -s /bin/bash dev
+ARG PUID=1000
+ARG PGID=1000
+
+RUN groupadd -g ${PGID} dev \
+    && useradd -u ${PUID} -g dev -m -s /bin/bash dev
 
 RUN chown -R dev:dev /usr/local/cargo
 
