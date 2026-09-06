@@ -1,4 +1,4 @@
-# Projeto Dev-Container - Ambiente de Desenvolvimento Docker
+# Projeto Rust-Dev-Container - Ambiente de Desenvolvimento Docker
 
 Este repositório contém um **ambiente de desenvolvimento completo** utilizando Docker, pronto para Rust.  
 
