@@ -2,7 +2,7 @@
 
 Este repositório contém um **ambiente de desenvolvimento completo** utilizando Docker, pronto para Rust.  
 
-O ambiente foi configurado para ser usado com IDEs como RustRover ou Editores como VSCode.
+O ambiente foi configurado para ser usado com IDEs ou Editores compatíves com Docker.
 
 ---
 
