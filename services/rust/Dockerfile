@@ -13,7 +13,7 @@ ARG PGID=1000
 
 RUN groupadd -g ${PGID} dev \
     && useradd -u ${PUID} -g dev -m -s /bin/bash dev
-    
+
 RUN chown -R dev:dev /usr/local/cargo /usr/local/rustup
     
 USER dev

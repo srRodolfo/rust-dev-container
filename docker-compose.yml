@@ -7,7 +7,7 @@ services:
         PUID: ${PUID:-1000}
         PGID: ${PGID:-1000}
         RUST_VERSION: ${RUST_VERSION:-latest}
-    image: dev-container-rust:${RUST_VERSION:-latest}	
+    image: dev-container-rust:${RUST_VERSION:-latest}-slim	
     container_name: ${CONTAINER_NAME:-dev_container}_rust       
     volumes:
       - ./app:/app:z
