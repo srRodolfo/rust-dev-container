@@ -1,13 +1,13 @@
 services:
-  # Rust Lang Slim
+  # Rust Lang
   rust:
     build:
-      context: ./services/rust_slim
+      context: ./services/rust
       args:
         PUID: ${PUID:-1000}
         PGID: ${PGID:-1000}
         RUST_VERSION: ${RUST_VERSION:-latest}
-    image: dev-container-rust:${RUST_VERSION:-latest}-slim  	
+    image: dev-container-rust:${RUST_VERSION:-latest}	
     container_name: ${CONTAINER_NAME:-dev_container}_rust       
     volumes:
       - ./app:/app:z
