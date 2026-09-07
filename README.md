@@ -21,7 +21,7 @@ project-root/
 │   └─ rust_slim/
 ├─ docker-compose.yml                          
 ├─ .env                          
-└─ projects/                          
+└─ app/                          
     └─ hello_cargo/  
 ```
 ---
@@ -61,7 +61,7 @@ docker compose up -d --build
 
 ### Volumes e Persistência
 
-- Código-fonte é montado no host em `/projects` para `/home/dev/projects` dentro do container
+- Código-fonte é montado no host em `/app` para `/app` dentro do container
 - O cache do Cargo persiste no volume `cargo_cache`
 
 ---
@@ -103,10 +103,10 @@ docker_rust_tools() {
   local tool="$1"
   shift
   local container=$(docker ps --format '{{.Names}}' | grep '_rust$' | head -n 1)
-  local rel_path="${PWD#*/projects}"
+  local rel_path="${PWD#*/app}"
 
   if [ -n "$container" ]; then
-    docker exec -it -w "/home/dev/projects${rel_path}" "$container" "$tool" "$@"
+    docker exec -it -w "/app${rel_path}" "$container" "$tool" "$@"
   else
     echo "Nenhum container Rust em execução. Rodando '$tool' no host."
     command "$tool" "$@"
@@ -132,7 +132,7 @@ cargo --version (exemplo de comando)
 # Rodar comandos do rustup direto no container
 rustup --version (exemplo de comando)
 ```
-- O comando só funciona no diretório de projetos `projects` e nos diretórios filhos.
+- O comando só funciona no diretório de projetos `app` e nos diretórios filhos.
 - O comando detecta automaticamente o container do projeto que utiliza este repositório.
 - Caso o container não esteja rodando, o comando será executado no host.
 
