@@ -21,7 +21,7 @@ USER dev
 RUN rustup component add rust-src rustfmt
 RUN cargo install cargo-watch
 
-WORKDIR /home/dev/projects
+WORKDIR /app
 
 ENTRYPOINT ["tini", "--"]
 CMD ["sleep", "infinity"]

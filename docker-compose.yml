@@ -10,7 +10,7 @@ services:
     image: dev-container-rust:${RUST_VERSION:-latest}-slim  	
     container_name: ${CONTAINER_NAME:-dev_container}_rust       
     volumes:
-      - ./projects:/home/dev/projects:z
+      - ./app:/app:z
       - cargo_cache:/usr/local/cargo:z
     ports:
       - "${RUST_PORT:-8080}:8080"
