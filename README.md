@@ -54,7 +54,7 @@ RUST_PORT=8080
 ```bash
 docker compose build --no-cache
 ```
-- `build` garante que as imagens sejam construídas ignorando o cache com a flag `--no-cache caso haja alterações no Dockerfile.
+- `build` garante que as imagens sejam construídas ignorando o cache com a flag `--no-cache` caso haja alterações no Dockerfile.
 - O Rust estará disponível na versão definida em `RUST_VERSION` e na porta definida em `RUST_PORT`.
 
 ---
